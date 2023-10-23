@@ -1,14 +1,16 @@
 package co.com.ajac.infrastructure.events;
 
-import co.com.ajac.base.events.Event;
-import co.com.ajac.base.events.Publisher;
+import co.com.ajac.messaging.events.Event;
+import co.com.ajac.messaging.publishers.PublisherProvider;
 import io.vavr.collection.List;
+import io.vavr.concurrent.Future;
 import org.springframework.stereotype.Component;
 
 @Component
-public class EventPublisher implements Publisher {
+public class EventPublisher implements PublisherProvider {
+
     @Override
-    public List<Event> publish(List<Event> list) {
-        return list;
+    public Future<List<Event>> publish(List<Event> list) {
+        return Future.successful(list);
     }
 }
